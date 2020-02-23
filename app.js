@@ -43,19 +43,23 @@ app.get('/connect/oauth2/token', (req, res) => {
 
 //gets products list
 app.get('/products',(req, res) => {
-    console.log(req)
+
+    console.log(req.header("Authorization"))
+    console.log("MEEEEEEE")
     axios.get(kroger + "/products",{ 
         headers: {
         "Authorization": req.header("Authorization")
-    }}
-)
-    .then(response => {
+                 }
+    }       
+    )
+      .then(response => {
+        console.log(response.data);
         res.json(
             response.data
             )
     })
     .catch(e => {
-        console.log(e)
+        // console.log(e)
     })
 
 })
